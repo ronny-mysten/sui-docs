@@ -204,6 +204,8 @@ const sidebars = {
         'build/program-with-objects/dynamic-fields',
         'build/program-with-objects/collections',
         'build/program-with-objects/object-display-standard',
+        'build/program-with-objects/kiosk',
+        'build/program-with-objects/sui-transfer-policy'
       ],
     },
     'build/programmable-tx-blocks',
@@ -228,7 +230,7 @@ const sidebars = {
       ],
     },
     'reference/sui-framework-reference',
-    'reference/event-query-and-subscription',
+    'reference/events-api',
     'reference/exchange-integration-guide',
     'reference/sui-bridging',
     'reference/sui-security',
@@ -236,6 +238,8 @@ const sidebars = {
     'reference/sui-glossary',
     'reference/research-papers',
     'reference/dev-cheat-sheet',
+    'reference/rpc-best-practices',
+    'reference/partner-matrix',
     {
       type: 'category',
       label: 'SDKs',
@@ -347,7 +351,6 @@ const sidebars = {
         id: 'contribute/nodes/full-node',
       },
       items: [
-        'contribute/nodes/full-node',
         'contribute/nodes/validator',
         'contribute/nodes/database-snapshots',
         'contribute/nodes/observability',
