@@ -1,0 +1,93 @@
+{
+  "hosting": [{
+      "target": "prod",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [{
+          "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+          "headers": [{
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }]
+        },
+        {
+          "source": "**/*.@(js|css)",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=604800"
+          }]
+        },
+        {
+          "source": "**/*.@(jpg|jpeg|gif|png)",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=31536000"
+          }]
+        }
+      ],
+      "redirects": [{
+        "source": "/build/wallet",
+        "destination": "/build/cli-client",
+        "type": 301
+
+      },
+      {
+        "source": "/contribute/cli-client",
+        "destination": "/build/cli-client",
+        "type": 301
+      },
+      {
+        "source": "/explore/devnet",
+        "destination": "/build/devnet",
+        "type": 301
+      }
+    ],
+
+      "rewrites": [{
+        "source": "/_api/authors",
+        "function": "gitHubAPiEndPoint"
+      }, {
+        "source": "/_api/search",
+        "function": "meilisearch"
+      }, {
+        "source": "/_api/addsearch",
+        "function": "addDataMeilisearch"
+      }, {
+        "source": "/_api/brokenlinksnotifier",
+        "function": "brokenLinkSendGridNotification"
+      }]
+    },
+    
+    {
+      "target": "dev",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [{
+          "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+          "headers": [{
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }]
+        },
+        {
+          "source": "**/*.@(jpg|jpeg|gif|png)",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=31536000"
+          }]
+        }
+      ] 
+    }]
+}

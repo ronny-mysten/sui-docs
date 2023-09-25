@@ -26,7 +26,23 @@ const config = {
       "zh-TW",
     ],
   },*/
-
+  markdown: {
+    mermaid: true,
+  },
+  plugins:    [
+    // ....
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
   presets: [
     [
       "classic",
@@ -36,7 +52,8 @@ const config = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/sui-foundation/sui-docs/tree/main/",
-          lastVersion: "current",
+          disableVersioning: true,
+          /*lastVersion: "current",
           versions: {
             current: {
               label: "Latest",
@@ -46,7 +63,7 @@ const config = {
           onlyIncludeVersions: [
             "current",
             "1.0.0",
-          ],
+          ],*/
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -87,108 +104,43 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "learn/sui-overview/sui-overview",
-            label: "Learn",
+            label: "Why Sui?",
+            to: "why_sui"
           },
           {
-            type: "doc",
-            docId: "build/quickstart/about",
-            label: "Build",
+            label: "Guides",
+            to: "guides",
           },
           {
-            type: "doc",
-            docId: "examples/intro",
-            label: "Examples",
+            label: "Concepts",
+            to: "concepts",
           },
           {
-            type: "doc",
-            docId: "reference/json-rpc/read-api",
-            label: "Reference",
+            label: "Standards",
+            to: "standards",
           },
           {
-            type: "doc",
-            docId: "contribute/contribution-process",
-            label: "Contribute",
+            label: "References",
+            to: "references",
           },
+        
+          /*          
           {
             type: "docsVersionDropdown",
             position: "right",
             dropdownActiveClassDisabled: true,
           },
-/*          {
+          {
             type: "localeDropdown",
             position: "right",
-          },*/
+          },
+          */
         ],
       },
       footer: {
         style: "dark",
-        links: [
-          {
-            title: "Documentation",
-            items: [
-              {
-                label: "Learn",
-                href: "https://docs.sui.io/learn",
-              },
-              {
-                label: "Build",
-                href: "https://docs.sui.io/build",
-              },
-              {
-                label: "Contribute",
-                href: "https://docs.sui.io/contribute",
-              },
-              {
-                label: "Reference",
-                href: "https://docs.sui.io/reference",
-              },
-            ],
-          },
-          {
-            title: "Resources",
-            items: [
-              {
-                label: "Developer Portal",
-                href: "https://sui.io/developers",
-              },
-              {
-                label: "Developer Grants",
-                href: "https://sui.io/developer-grants",
-              },
-            ],
-          },
-          {
-            title: "Community",
-            items: [
-              {
-                label: "Forums",
-                href: "https://forums.sui.io/",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/SuiNetwork",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/MystenLabs/sui",
-              },
-              {
-              label: "Telegram",
-              href: "https://t.me/+mODLY50r0BEyM2Ux",
-              },
-              {
-                label: "Discord",
-                href: "https://discord.gg/sui",
-              },
-
-            ],
-          },
-        ],
         copyright: `© ${new Date().getFullYear()} Sui Foundation | Documentation distributed under <a href="https://github.com/sui-foundation/sui-docs/blob/main/LICENSE">CC BY 4.0</a>`
       },
-      
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

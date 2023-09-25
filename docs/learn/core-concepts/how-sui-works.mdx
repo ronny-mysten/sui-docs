@@ -93,7 +93,7 @@ For transactions involving one or more shared objects, the process is as describ
 
 ## Scalability {#scalability}
 
-As mentioned, Sui does not impose a total order on the transactions containing only owned objects. Instead, transactions are [causally ordered](../../reference/sui-compared.mdx#causal-order-vs-total-order). If a transaction `T1` produces an output object `O1` used as input object in a transaction `T2`, a validator must execute `T1` before it executes `T2`. Note that `T2` does not need to use these objects directly for a causal relationship to exist, e.g., `T1` might produce output objects that are then used by `T3`, and `T2` might use `T3`'s output objects. However, transactions with no causal relationship can be processed by Sui validators in any order. This insight allows Sui to massively parallelize execution, and shard it across multiple machines.
+As mentioned, Sui does not impose a total order on the transactions containing only owned objects. Instead, transactions are [causally ordered](../../references/sui-compared.mdx#causal-order-vs-total-order). If a transaction `T1` produces an output object `O1` used as input object in a transaction `T2`, a validator must execute `T1` before it executes `T2`. Note that `T2` does not need to use these objects directly for a causal relationship to exist, e.g., `T1` might produce output objects that are then used by `T3`, and `T2` might use `T3`'s output objects. However, transactions with no causal relationship can be processed by Sui validators in any order. This insight allows Sui to massively parallelize execution, and shard it across multiple machines.
 
 :::info
 
