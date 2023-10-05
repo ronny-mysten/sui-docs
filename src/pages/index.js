@@ -1,6 +1,14 @@
 import React from 'react';
-import  { Redirect } from 'react-router-dom';
+import {Card, Cards} from '../components/Cards';
+import Layout from '@theme/Layout';
 
 export default function Home() {
-  return <Redirect to='/sui-overview' />;
+  return (
+    <Layout>
+      <div className="p-16">
+        <p className="text-center text-6xl">Docs landing page</p>
+      </div>
+    </Layout>
+  )
+  
 }
